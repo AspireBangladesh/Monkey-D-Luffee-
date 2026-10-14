@@ -765,6 +765,65 @@ button.btn{border:0;cursor:pointer;font-family:inherit}
 .soon-b::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--acc2),var(--acc),transparent)}
 .soon-b h3{font-family:var(--d);font-size:1.7rem;line-height:1.2;margin:0 0 10px}
 .soon-b p{margin:0 0 24px;color:var(--mute);line-height:1.6}
+/* Aspire AI assistant */
+#ai-fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:850;display:flex;align-items:flex-end;gap:10px;pointer-events:none}
+#ai-fab>*{pointer-events:auto}
+.ai-tip{margin-bottom:12px;max-width:58vw;padding:10px 14px;border-radius:16px 16px 4px 16px;border:1px solid color-mix(in srgb,var(--acc) 55%,transparent);background:#0b0f0c;color:#fff;font:700 .85rem/1.25 var(--b);text-align:left;cursor:pointer;box-shadow:0 0 18px color-mix(in srgb,var(--acc) 35%,transparent);opacity:0;visibility:hidden;transform:translateY(8px) scale(.96);transition:opacity .35s ease,transform .35s ease,visibility 0s .35s}
+.ai-tip.show{opacity:1;visibility:visible;transform:none;transition:opacity .35s ease,transform .35s ease}
+.ai-tip b{color:var(--acc)}
+.ai-btn{position:relative;width:60px;height:60px;flex:none;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:linear-gradient(135deg,var(--acc2),var(--acc));box-shadow:0 8px 28px color-mix(in srgb,var(--acc) 45%,transparent),inset 0 0 0 1px rgba(255,255,255,.14);transition:transform .25s ease}
+.ai-btn:hover{transform:translateY(-2px) scale(1.05)}
+.ai-btn svg{width:32px;height:32px}
+.ai-btn::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--acc);animation:aiPulse 2.4s ease-out infinite;pointer-events:none}
+@keyframes aiPulse{from{transform:scale(1);opacity:.6}to{transform:scale(1.55);opacity:0}}
+.ai-btn .i-x{display:none}
+.ai-btn[aria-expanded="true"] .i-x{display:block}
+.ai-btn[aria-expanded="true"] .i-bot{display:none}
+.ai-btn[aria-expanded="true"]::after{display:none}
+#ai-panel{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 74px);z-index:850;width:min(390px,calc(100vw - 24px));height:min(580px,calc(100vh - 120px));height:min(580px,calc(100dvh - 120px));display:flex;flex-direction:column;overflow:hidden;border-radius:22px;border:1px solid color-mix(in srgb,var(--acc) 38%,transparent);background:var(--card);color:var(--text);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 28px color-mix(in srgb,var(--acc) 18%,transparent);transform-origin:bottom right;opacity:0;visibility:hidden;transform:translateY(14px) scale(.96);transition:opacity .25s ease,transform .25s ease,visibility 0s .25s}
+#ai-panel.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s ease}
+.ai-h{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 16%,var(--card)),var(--card))}
+.ai-av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--acc2),var(--acc))}
+.ai-av svg{width:24px;height:24px}
+.ai-ht{flex:1;min-width:0}
+.ai-ht b{display:block;font:700 .82rem/1.2 var(--d);letter-spacing:-.01em}
+.ai-ht span{display:flex;align-items:center;gap:6px;margin-top:3px;font:.72rem/1.2 var(--b);color:var(--mute)}
+.ai-ht span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 6px var(--acc)}
+.ai-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--text);font-size:1.2rem;line-height:1;cursor:pointer}
+.ai-x:hover{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.ai-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none;padding:16px;display:flex;flex-direction:column;gap:12px}
+.ai-log::-webkit-scrollbar{display:none;width:0;height:0}
+.ai-m{max-width:88%;padding:10px 13px;border-radius:16px;font:.9rem/1.5 var(--b);overflow-wrap:anywhere;animation:aiIn .3s ease}
+@keyframes aiIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.ai-m p{margin:0}.ai-m p+p{margin-top:8px}
+.ai-m.bot{align-self:flex-start;background:var(--bg2);border:1px solid var(--line);border-bottom-left-radius:5px;color:var(--text)}
+.ai-m.me{align-self:flex-end;background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;border-bottom-right-radius:5px}
+.ai-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ai-act{display:inline-flex;align-items:center;padding:7px 13px;border-radius:99px;border:1px solid color-mix(in srgb,var(--acc) 50%,transparent);background:color-mix(in srgb,var(--acc) 10%,transparent);color:var(--text);font:700 .8rem/1.2 var(--b);text-decoration:none;cursor:pointer}
+.ai-act:hover{background:color-mix(in srgb,var(--acc) 22%,transparent)}
+.ai-act.p{background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;border-color:transparent}
+.ai-typing{display:flex;gap:5px;padding:13px 15px}
+.ai-typing i{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:aiDot 1s ease-in-out infinite}
+.ai-typing i:nth-child(2){animation-delay:.15s}.ai-typing i:nth-child(3){animation-delay:.3s}
+@keyframes aiDot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-4px)}}
+.ai-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 14px 10px;scrollbar-width:none}
+.ai-chips::-webkit-scrollbar{display:none}
+.ai-chip{flex:none;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--text);font:600 .78rem/1.2 var(--b);cursor:pointer;white-space:nowrap}
+.ai-chip:hover{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent)}
+.ai-f{display:flex;gap:8px;padding:10px 14px 8px;border-top:1px solid var(--line)}
+.ai-f input{flex:1;min-width:0;padding:11px 15px;border-radius:99px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font:16px var(--b);outline:none}
+.ai-f input:focus{border-color:var(--acc)}
+.ai-f button{flex:none;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:linear-gradient(135deg,var(--acc2),var(--acc))}
+.ai-f button svg{width:18px;height:18px}
+.ai-note{padding:0 14px 10px;font:.68rem/1.3 var(--b);color:var(--mute);text-align:center}
+@media (max-width:520px){#ai-fab{right:max(12px,env(safe-area-inset-right,0px))}#ai-panel{left:12px;right:12px;width:auto;height:min(600px,calc(100vh - 110px));height:min(600px,calc(100dvh - 110px))}}
+@media (prefers-reduced-motion:reduce){.ai-btn::after,.ai-typing i{animation:none}.ai-m{animation:none}#ai-panel,.ai-tip{transition:none}}
+
+.ai-f button,.ai-chip,.ai-act,.ai-btn,.ai-x,.ai-tip{touch-action:manipulation}
+@media (max-width:520px){#ai-panel.kb{top:calc(var(--vvt,0px) + 8px);bottom:auto;height:min(600px,calc(var(--vvh,100vh) - 16px))}}
+/* hide the page scrollbar (scrolling still works) */
+html{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 /* Join CTA band (above Aspire 3Front) */
 .jnb{padding:36px 0}
 .jn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:30px 34px;border-radius:24px;border:1px solid color-mix(in srgb,var(--acc) 40%,transparent);background:linear-gradient(155deg,color-mix(in srgb,var(--acc) 12%,var(--card)),var(--card) 62%);box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 10%,transparent),0 0 26px color-mix(in srgb,var(--acc) 16%,transparent)}
@@ -1000,6 +1059,45 @@ nav b.lg img{height:40px;width:auto;display:block}
 .gall-h h3{margin:0;font-family:var(--d);font-size:1.5rem}
 .gall-x{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.6rem;line-height:1;cursor:pointer;padding:0}
 .gall-x:hover{border-color:var(--acc)}
+</style>
+<style id="geass-skin">
+/* ===== Kibou AI — green sigil + smoke skin (follows site theme) ===== */
+#ai-fab,#ai-panel{--gx1:#2dd4bf;--gx2:#25d366;--gx3:#a7f3d0;--gx-em:url("data:image/png;base64,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")}
+.gx-sig{position:relative;display:block;width:var(--s,40px);aspect-ratio:346/205;flex:none}
+.gx-sig .gl{position:absolute;inset:0;filter:drop-shadow(0 0 3px rgba(37,211,102,.95)) drop-shadow(0 0 9px rgba(45,212,191,.75));animation:gxGlow 2.4s ease-in-out infinite alternate}
+.gx-sig .gl b{display:block;width:100%;height:100%;background:linear-gradient(105deg,#12a85b 30%,#f2fff7 50%,#12a85b 70%) 0 0/260% 100%;-webkit-mask:var(--gx-em) center/contain no-repeat;mask:var(--gx-em) center/contain no-repeat;animation:gxShine 3.2s linear infinite}
+.gx-sig .sm{position:absolute;left:12%;top:18%;width:56%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(130,255,180,.7),rgba(37,211,102,.28) 45%,transparent 70%);filter:blur(5px);mix-blend-mode:screen;opacity:0;pointer-events:none;animation:gxSmoke 3.6s ease-out infinite}
+.gx-sig .sm:nth-child(2){left:34%;--dx:12px;animation-delay:-1.2s;animation-duration:4.2s}
+.gx-sig .sm:nth-child(3){left:-6%;--dx:-14px;animation-delay:-2.4s;animation-duration:3.9s}
+@keyframes gxSmoke{0%{transform:translate(0,8px) scale(.45);opacity:0}22%{opacity:.8}100%{transform:translate(var(--dx,0px),-38px) scale(1.9);opacity:0}}
+@keyframes gxGlow{to{filter:drop-shadow(0 0 5px rgba(37,211,102,1)) drop-shadow(0 0 16px rgba(45,212,191,.95))}}
+@keyframes gxShine{from{background-position:150% 0}to{background-position:-50% 0}}
+#ai-fab .ai-btn{width:64px;height:64px;background:radial-gradient(circle at 50% 40%,#0c1a14,#030706 75%);border:1px solid rgba(45,212,191,.45);box-shadow:0 0 0 4px rgba(37,211,102,.08),0 8px 30px rgba(37,211,102,.35),inset 0 0 18px rgba(45,212,191,.2)}
+#ai-fab .ai-btn .gx-sig{--s:40px}
+#ai-fab .ai-tip{background:#050a08;border:1px solid rgba(45,212,191,.6);border-radius:14px 14px 4px 14px;font:700 .85rem/1.25 var(--b);color:#fff;box-shadow:0 0 20px rgba(45,212,191,.3)}
+#ai-fab .ai-tip b{background:linear-gradient(90deg,var(--gx1),var(--gx2));-webkit-background-clip:text;background-clip:text;color:transparent}
+#ai-panel{border-radius:24px;border:1px solid rgba(45,212,191,.4);box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 40px rgba(45,212,191,.16)}
+#ai-panel::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 20% 80%,rgba(37,211,102,.22),transparent 38%),radial-gradient(circle at 80% 90%,rgba(45,212,191,.2),transparent 40%),radial-gradient(circle at 55% 100%,rgba(167,243,208,.12),transparent 35%);filter:blur(18px);pointer-events:none;z-index:0;animation:gxDrift 12s ease-in-out infinite alternate}
+@keyframes gxDrift{from{transform:translate(-4%,3%) scale(1)}to{transform:translate(5%,-6%) scale(1.15)}}
+#ai-panel::after{content:"";position:absolute;right:-18px;bottom:64px;width:230px;aspect-ratio:346/205;background:var(--gx2);opacity:.06;-webkit-mask:var(--gx-em) center/contain no-repeat;mask:var(--gx-em) center/contain no-repeat;transform:rotate(-8deg);pointer-events:none;z-index:0}
+#ai-panel>*{position:relative;z-index:1}
+#ai-panel .ai-h{background:linear-gradient(120deg,rgba(45,212,191,.2),rgba(37,211,102,.05) 70%),var(--card)}
+#ai-panel .ai-av{width:46px;height:46px;background:radial-gradient(circle at 50% 40%,#0c1a14,#030706 75%);border:1px solid rgba(45,212,191,.5);box-shadow:0 0 16px rgba(45,212,191,.4)}
+#ai-panel .ai-av .gx-sig{--s:30px}
+#ai-panel .ai-ht b{font:800 .95rem/1.2 var(--d);letter-spacing:.14em;text-transform:uppercase}
+#ai-panel .ai-ht b em{font-style:normal;background:linear-gradient(90deg,var(--gx1),var(--gx2));-webkit-background-clip:text;background-clip:text;color:transparent}
+#ai-panel .ai-m.bot{border-radius:5px 16px 16px 16px;border-color:rgba(45,212,191,.22)}
+#ai-panel .ai-m.me{background:linear-gradient(135deg,#0f9d8a,#25d366);color:#04140c;font-weight:600;border-radius:16px 5px 16px 16px;box-shadow:0 4px 18px rgba(45,212,191,.25)}
+#ai-panel .ai-act.p{color:#04140c}
+#ai-panel .ai-chip{border-color:rgba(45,212,191,.4)}
+#ai-panel .ai-f input:focus{border-color:var(--gx1);box-shadow:0 0 0 3px rgba(45,212,191,.18)}
+#ai-panel .ai-f button{background:linear-gradient(135deg,#0f9d8a,#25d366);box-shadow:0 0 16px rgba(45,212,191,.4)}
+#ai-panel .ai-f button svg{stroke:#04140c}
+#ai-panel .ai-typing i{background:var(--gx1)}
+#ai-panel.open .ai-av .gx-sig{animation:gxPop .8s ease-out}
+@keyframes gxPop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.25);opacity:1}100%{transform:none}}
+@media (prefers-reduced-motion:reduce){.gx-sig .gl,.gx-sig .gl b,.gx-sig .sm,#ai-panel::before,#ai-panel.open .ai-av .gx-sig{animation:none}.gx-sig .sm{opacity:.35}}
+#ai-panel .ai-ht b::after{content:"希望";margin-left:10px;font:600 .7rem var(--b);letter-spacing:.1em;color:var(--mute);vertical-align:middle}
 </style>
 </head>
 <body>
@@ -2075,6 +2173,7 @@ p.then(show).catch(function(){if(!live){el.hidden=false;n.textContent="\u2014"}}
 <script>(function(){
 /* Paste your Google Form link between the quotes below. While it is empty, Sign Up shows "Coming Soon". */
 var REG_URL="";
+window.ASPIRE_REG_URL=REG_URL;
 var b=document.getElementById("regBtn"),m=document.getElementById("soon"),x=document.getElementById("soonX");if(!b||!m||!x)return;
 var last=null;
 function open(){last=document.activeElement;m.hidden=false;document.documentElement.style.overflow="hidden";x.focus()}
@@ -2083,6 +2182,128 @@ b.addEventListener("click",function(){if(REG_URL){window.open(REG_URL,"_blank","
 x.addEventListener("click",close);
 m.addEventListener("click",function(e){if(e.target===m)close()});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!m.hidden)close()});
+})();</script>
+<div id="ai-fab"><button type="button" class="ai-tip" id="ai-tip">Ask <b>Kibou AI</b></button><button type="button" class="ai-btn" id="ai-btn" aria-label="Open Kibou AI" aria-expanded="false" aria-controls="ai-panel"><span class="i-bot gx-sig" aria-hidden="true"><i class="sm"></i><i class="sm"></i><i class="sm"></i><span class="gl"><b></b></span></span><svg class="i-x" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M8 8l16 16M24 8L8 24"/></svg></button></div>
+<div id="ai-panel" role="dialog" aria-label="Kibou AI" aria-hidden="true"><div class="ai-h"><div class="ai-av"><span class="gx-sig" aria-hidden="true"><i class="sm"></i><i class="sm"></i><i class="sm"></i><span class="gl"><b></b></span></span></div><div class="ai-ht"><b>Kibou <em>AI</em></b><span>Ask about programs, events &amp; joining</span></div><button type="button" class="ai-x" id="ai-x" aria-label="Close chat">&times;</button></div><div class="ai-log" id="ai-log" role="log" aria-live="polite"></div><div class="ai-chips" id="ai-chips"></div><form class="ai-f" id="ai-form" autocomplete="off"><input id="ai-in" type="text" maxlength="300" placeholder="Ask Kibou AI..." aria-label="Type your question"><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></button></form><div class="ai-note">Answers come from the content of this website.</div></div>
+<script>(function(){
+/* ===== Aspire Assistant =====
+   Reads this page's own content and answers visitors. No API key needed.
+   Optional: put the URL of your own AI proxy in AI_ENDPOINT below to get generative answers. */
+var AI_ENDPOINT="";
+var $=function(s){return document.querySelector(s)};
+var btn=$("#ai-btn"),tip=$("#ai-tip"),panel=$("#ai-panel"),log=$("#ai-log"),form=$("#ai-form"),inp=$("#ai-in"),chipBox=$("#ai-chips"),xb=$("#ai-x");
+if(!btn||!panel||!log||!form||!inp)return;
+var RM=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+var NAMES={top:"Home",about:"Our Journey",impact:"Our Impact",event:"Upcoming Event",fronts:"Aspire 3Front",programs:"Signature Programs",youth:"Youth Development",community:"Community Development",crisis:"Crisis Management",projects:"Community Projects",ahead:"Looking Ahead 2027\u201328",involved:"Get Involved",board:"Meet The Teams",news:"News Coverage",gallery:"Gallery",wellness:"Wellness",contact:"Contact Us"};
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function L(){var j=document.querySelectorAll("#join a.btn"),m=document.querySelectorAll("#contact a[href^='mailto:']"),t=document.querySelector("#contact a[href^='tel:']");
+function f(k){var a=document.querySelector("#contact a[href*='"+k+"']");return a?a.href:""}
+return{vol:j[0]?j[0].href:"https://forms.gle/vbwB2x9Y3y9oBxBE7",amb:j[1]?j[1].href:"https://forms.gle/a2f36bTzAcL8bqV77",mail:m[0]?m[0].textContent.trim():"aspirebd.123@gmail.com",fmail:m[1]?m[1].textContent.trim():"",tel:t?t.textContent.trim():"",fb:f("facebook.com")||"https://www.facebook.com/aspirebangladesh",ig:f("instagram.com")||"https://www.instagram.com/aspirebangladesh",li:f("linkedin.com/company")||"https://www.linkedin.com/company/aspirebangladesh"}}
+function R(t,a){return{text:t,acts:a||[]}}
+var A={link:function(l,h,p){return{t:"link",label:l,href:h,p:p}},go:function(l,i,p){return{t:"go",label:l,id:i,p:p}},ask:function(l,q,p){return{t:"ask",label:l,q:q||l,p:p}}};
+
+/* ---- read the page ---- */
+var IDX=null;
+var STOP="a an the and or of to in on for with is are was were be been it this that these those at by from as about what which who whom how do does did can could should would will your you our we us me my i am if so than then there their they them have has had not no yes any all more most some such into over also just tell please".split(" ");
+function tok(s){return(s.toLowerCase().match(/[a-z0-9]+|[\u0980-\u09ff]+/g)||[]).filter(function(w){return w.length>1&&STOP.indexOf(w)<0}).map(function(w){return w.length>3&&/s$/.test(w)&&!/ss$/.test(w)?w.slice(0,-1):w})}
+function build(){if(IDX)return IDX;var chunks=[],df={},seenT={},skip={crisis:1,gallery:1};
+document.querySelectorAll("header[id],section[id]").forEach(function(s){if(skip[s.id])return;var cur=NAMES[s.id]||s.id;
+s.querySelectorAll("h1,h2,h3,h4,p,li,tr").forEach(function(n){if(n.closest("nav,script,style,button,#ai-fab,#ai-panel"))return;
+if(/^H[1-4]$/.test(n.tagName)){var ht=n.textContent.replace(/\s+/g," ").trim();if(ht)cur=ht;return}
+var t=n.tagName==="TR"?[].map.call(n.children,function(c){return c.textContent.replace(/\s+/g," ").trim()}).filter(function(c){return c&&c!=="\u2014"&&!/^\d{5,}$/.test(c)}).join(" \u00b7 "):n.textContent.replace(/\s+/g," ").trim();if(t.length<(n.tagName==="TR"?18:30)||seenT[t])return;seenT[t]=1;
+chunks.push({i:chunks.length,id:s.id,h:cur,t:t,w:tok(cur+" "+t),hw:tok(cur+" "+(NAMES[s.id]||""))})})});
+chunks.forEach(function(c){var u={};c.w.forEach(function(w){if(!u[w]){u[w]=1;df[w]=(df[w]||0)+1}})});
+IDX={c:chunks,df:df,n:Math.max(1,chunks.length)};return IDX}
+function top(q,k){var I=build(),qt=tok(q),u={};qt=qt.filter(function(w){return u[w]?0:(u[w]=1)});if(!qt.length)return[];
+return I.c.map(function(c){var s=0,hit=0;qt.forEach(function(w){var idf=Math.log(1+I.n/(I.df[w]||.5));if(c.w.indexOf(w)>-1){s+=idf;hit++}if(c.hw.indexOf(w)>-1)s+=idf*.6});
+return{c:c,s:s*(hit/qt.length>=.5?1.15:1),hit:hit}}).filter(function(r){return r.hit>0}).sort(function(a,b){return b.s-a.s}).slice(0,k).map(function(r){return{i:r.c.i,id:r.c.id,h:r.c.h,t:r.c.t,s:r.s}})}
+function snip(t){if(t.length<=300)return t;var c=t.slice(0,300),i=Math.max(c.lastIndexOf(". "),c.lastIndexOf("; "));return(i>120?c.slice(0,i+1):c.replace(/\s+\S*$/,""))+"\u2026"}
+function regUrl(){return(window.ASPIRE_REG_URL||"").trim()}
+function evRows(){return[].slice.call(document.querySelectorAll("#event .ev-r")).map(function(r){var h=r.querySelector("h3"),p=r.querySelector("p");return h&&p?h.textContent.replace(/^\s*\d+/,"").trim()+" \u2014 "+p.textContent.trim():""}).filter(Boolean)}
+
+/* ---- what the assistant knows how to answer on command ---- */
+var INT=[
+[function(n){return/suicid|kill myself|self[- ]?harm|end my life|want to die|hurt myself|\u0986\u09a4\u09cd\u09ae\u09b9\u09a4\u09cd\u09af\u09be/.test(n)},function(){return R(["I'm really sorry you're going through this. You don't have to face it alone. Please tell someone you trust right now and stay with a person rather than being by yourself.","In Bangladesh, you can call 999 or go to the nearest hospital for urgent help."],[A.go("Open Wellness tips","wellness")])}],
+[function(n){return n.split(/\s+/).length<=6&&/^(hi+|hello|hey+|salam|assalam\w*|good (morning|afternoon|evening)|\u09b9\u09cd\u09af\u09be\u09b2\u09cb|\u09b9\u09be\u0987|\u0986\u09b8\u09b8\u09be\u09b2\u09be\u09ae\u09c1\S*)/.test(n)},function(){return R(["I am Kibou AI, the Aspire Bangladesh assistant. I can tell you about our programs, the National Youth Innovation Challenge 2026, how to join us and how to get in touch. What would you like to know?"])}],
+[function(n){return n.split(/\s+/).length<=6&&/\b(thanks?|thank you|thx)\b|\u09a7\u09a8\u09cd\u09af\u09ac\u09be\u09a6/.test(n)},function(){return R(["You're welcome! Is there anything else you'd like to know?"])}],
+[function(n){return/^(help|menu|commands?|options)\b|what can you (do|help)|what (can|should) i ask/.test(n)},function(){return R(["I can help with:","\u2022 The National Youth Innovation Challenge 2026 and how to register","\u2022 Joining as a volunteer or campus ambassador","\u2022 Our programs, projects and focus areas","\u2022 Our team, impact numbers and contact details","Type your question, or tap a button below."])}],
+[function(n){return/kibou|kibo\b|\u5e0c\u671b|(name|\u09a8\u09be\u09ae).{0,25}(mean|origin|come|came|stand|story|behind|japan|why)|(mean|origin|why|story).{0,25}(name|\u09a8\u09be\u09ae)|why.{0,12}(called|named)/.test(n)},function(){return R(["My name comes from the Japanese word 希望 (kibō), which means \"hope\". I'm Kibou AI — here to help you find hope and a way in: Aspire Bangladesh's programs, events and how to join."])}],
+[function(n){return/(are you|r u) (a |an )?(real |human|bot|ai|robot|person)|who (are|r) you|your name/.test(n)},function(){return R(["I am Kibou AI (希望, meaning “hope” in Japanese), Aspire Bangladesh's virtual assistant. I answer using the content of this website, so for anything it doesn't cover, please email "+L().mail+"."],[A.link("Email us","mailto:"+L().mail,1)])}],
+[function(n){return/ambassador|campus rep|\u0985\u09cd\u09af\u09be\u09ae\u09cd\u09ac\u09be\u09b8\u09c7\u09a1\u09b0|\u098f\u09cd\u09af\u09be\u09ae\u09cd\u09ac\u09be\u09b8\u09c7\u09a1\u09b0/.test(n)},function(){var l=L();return R(["Campus Ambassadors represent Aspire Bangladesh on their campus. We currently have 14 university ambassadors.","You can apply through our Google Form."],[A.link("Join as Campus Ambassador",l.amb,1),A.ask("Volunteer instead","How can I join as a volunteer?")])}],
+[function(n){return/volunteer|\u09ad\u09b2\u09be\u09a8\u09cd\u099f\u09bf\u09af\u09bc\u09be\u09b0|\u09b8\u09cd\u09ac\u09c7\u099a\u09cd\u099b\u09be\u09b8\u09c7\u09ac\u0995/.test(n)},function(){var l=L();return R(["You can join Aspire Bangladesh as a volunteer by filling out our Google Form. We currently have 120+ active volunteers (Feb 2026)."],[A.link("Join as Volunteer",l.vol,1),A.ask("Campus ambassador","How do I become a campus ambassador?")])}],
+[function(n){return/regist|sign\s?up|enrol|\bapply\b|participat|submit|\u09b0\u09c7\u099c\u09bf\u09b8\u09cd\u099f\u09cd\u09b0\u09c7\u09b6\u09a8|\u09a8\u09bf\u09ac\u09a8\u09cd\u09a7\u09a8|\u0986\u09ac\u09c7\u09a6\u09a8|\u0985\u0982\u09b6\u0997\u09cd\u09b0\u09b9\u09a3|(join|enter|take part).*(challenge|event|competition|nyic)/.test(n)},function(n){var u=regUrl(),l=L();
+if(/hackathon|marathon|axiom|camp|training/.test(n))return R(["I don't see registration details for that program on the website yet. Please email "+l.mail+" and the team will guide you.","The registration coming up is for the National Youth Innovation Challenge 2026."],[A.link("Email us","mailto:"+l.mail,1),A.ask("About the event","Tell me about the upcoming event")]);
+if(u)return R(["Registration for the National Youth Innovation Challenge 2026 is open. Use the button below to register."],[A.link("Register now",u,1),A.go("See event details","event")]);
+return R(["Registration for the National Youth Innovation Challenge 2026 hasn't opened yet \u2014 it's coming soon. The registration link will appear right here and in the Upcoming Event section.","Follow us on Facebook for announcements."],[A.go("Open Upcoming Event","event",1),A.link("Facebook",l.fb)])}],
+[function(n){return/\bjoin\b|member(ship)?|become a (part|member)|get involved|\u09af\u09cb\u0997 \u09a6/.test(n)},function(){var l=L();return R(["There are a few ways to be part of Aspire Bangladesh:","\u2022 Volunteer \u2014 use your time and skills to support communities.","\u2022 Campus Ambassador \u2014 represent us on your campus.","\u2022 National Youth Innovation Challenge 2026 \u2014 for university students (registration coming soon)."],[A.link("Join as Volunteer",l.vol,1),A.link("Join as Campus Ambassador",l.amb),A.go("Get Involved","involved")])}],
+[function(n){return/challenge|nyic|competition|showcase|upcoming|\bevents?\b|poster|oral|\u0987\u09ad\u09c7\u09a8\u09cd\u099f|\u09aa\u09cd\u09b0\u09a4\u09bf\u09af\u09cb\u0997\u09bf\u09a4\u09be/.test(n)},function(){var u=regUrl(),r=evRows();
+var t=["National Youth Innovation Challenge 2026 is our upcoming event."].concat(r.length?r:["A national innovation competition for university students to present impactful research and innovative solutions."]);
+t.push(u?"Registration is open.":"Registration is coming soon.");
+return R(t,[u?A.link("Register now",u,1):A.ask("How do I register?","How do I register for the event?",1),A.go("Open Upcoming Event","event")])}],
+[function(n){return/contact|e-?mail|phone|\bcall\b|number|reach (you|out)|whatsapp|address|location|where are you|office|\u09af\u09cb\u0997\u09be\u09af\u09cb\u0997|\u09ab\u09cb\u09a8|\u0987\u09ae\u09c7\u0987\u09b2|\u09a0\u09bf\u0995\u09be\u09a8\u09be/.test(n)},function(n){var l=L(),t=["You can email Aspire Bangladesh at "+l.mail+"."],a=[A.link("Email us","mailto:"+l.mail,1)];
+if(l.fmail||l.tel){t.push("Founder Md Shadman Khan: "+[l.fmail,l.tel].filter(Boolean).join(" \u00b7 ")+".");if(l.tel)a.push(A.link("Call founder","tel:"+l.tel.replace(/[^+\d]/g,"")))}
+if(/office|address|location|where|\u09a0\u09bf\u0995\u09be\u09a8\u09be/.test(n))t.unshift("The website doesn't list a physical address.");a.push(A.link("Facebook",l.fb));a.push(A.go("Contact section","contact"));return R(t,a)}],
+[function(n){return/facebook|instagram|linkedin|social media|follow (you|us)/.test(n)},function(){var l=L();return R(["You can follow Aspire Bangladesh here:"],[A.link("Facebook",l.fb,1),A.link("Instagram",l.ig),A.link("LinkedIn",l.li)])}],
+[function(n){return/donat|support a project|partner|sponsor|collaborat/.test(n)},function(){var l=L();return R(["To support a project or partner with us, please get in touch at "+l.mail+". You can also explore the Get Involved section."],[A.link("Email us","mailto:"+l.mail,1),A.go("Get Involved","involved")])}],
+[function(n){return/\bboard\b|founder|chairman|central team|meet the team|who (runs|leads|started|founded)|\u09aa\u09cd\u09b0\u09a4\u09bf\u09b7\u09cd\u09a0\u09be\u09a4\u09be/.test(n)},function(){return R(["Aspire is led by Md Shadman Khan (Founder & Chairman), Saiful Islam (Co-Founder), Zafir Raian (Organizing Secretary) and Rahat Hossain (General Secretary).","University ambassador committees are listed under Meet The Teams."],[A.go("Meet The Teams","board",1)])}],
+[function(n){return/what is aspire|who (is|are) aspire|about (aspire|you|us|this)|tell me about (aspire|yourself|your org)|mission|vision|founded|when (was|were) .*(found|start|begin)|history|\u09b8\u09ae\u09cd\u09aa\u09b0\u09cd\u0995\u09c7/.test(n)},function(){return R(["Aspire Bangladesh is a national youth-led social impact initiative, founded on 26 March 2020. It empowers young people through leadership, civic engagement and sustainable development, and serves communities through education, humanitarian assistance and emergency response."],[A.go("Our Journey","about",1),A.ask("Our impact","How many people have you helped?")])}],
+[function(n){return/beneficiar|statistic|stats|\bimpact\b|people (reached|helped)|how many (people|volunteers|members|beneficiaries|ambassadors|universit)|\bmembers\b/.test(n)},function(){return R(["Aspire Bangladesh has reached 10,000+ beneficiaries through education, aid and emergency response. We have 500+ registered members, 120+ active volunteers (Feb 2026) and 14 university ambassadors."],[A.go("Our Impact","impact",1)])}],
+[function(n){return/3 ?front|\byca\b|framework|focus area/.test(n)},function(){return R(["Aspire 3Front (the YCA Framework) has three interconnected focus areas: Youth Empowerment, Community Development, and Agro & Climate Resilience."],[A.go("Aspire 3Front","fronts",1),A.go("Youth","youth"),A.go("Community","community")])}],
+[function(n){return/program|signature/.test(n)},function(){return R(["Our signature Youth Development programs are:","\u2022 Youth Innovation Challenge \u2014 a national innovation competition promoting research, technology and sustainable solutions.","\u2022 Hackathon \u2014 an intensive team-based competition to solve real-world challenges in a limited time.","\u2022 Youth Marathon \u2014 promotes fitness, mental well-being and social awareness.","\u2022 Axiom Camp \u2014 a leadership and capacity-building camp on communication, teamwork, critical thinking and project management."],[A.go("Signature Programs","programs",1),A.ask("Upcoming event","Tell me about the upcoming event")])}],
+[function(n){return/disaster|flood|cyclone|crisis|landslide|drought|haor|risk map|district/.test(n)},function(){return R(["Our Crisis & Disaster Management section has an interactive 3D risk map covering Bangladesh's 64 districts, hazard types (cyclone, flash flood, river erosion, landslide, drought), emergency helplines and volunteer action protocols."],[A.go("Open Crisis Management","crisis",1)])}],
+[function(n){return/ramadan|2027|2028|future|next phase|looking ahead|upcoming plan|your plans/.test(n)},function(){return R(["Looking ahead to 2027\u201328, we plan to expand into food security, sustainability, environmental solutions and cultural preservation \u2014 including a Ramadan Food Aid Campaign and Sustainable Agro & Eco-Solution Projects."],[A.go("Looking Ahead","ahead",1)])}],
+[function(n){return/\bprojects?\b|food aid|relief|tea worker|unshota|cpx|nutrition/.test(n)},function(){return R(["Our community support work from 2024 to 2026 includes Help Out Tea Worker Families, Project Unshota (cloth support), food aid projects CPX3, CPX4 and CPX5, and a Nutrition Awareness Campaign in schools."],[A.go("Community Projects","projects",1)])}],
+[function(n){return/mental|stress|anxiety|sleep|\bhealth|wellness|mood/.test(n)},function(){return R(["Our Wellness section shares simple habits and early-support tips for mental and physical health. If you ever feel unsafe or in crisis, call 999 or talk to a trusted person."],[A.go("Open Wellness","wellness",1)])}],
+[function(n){return/\bnews\b|media|coverage|press/.test(n)},function(){return R(["We've been covered by outlets including The Daily Inqilab and Khola Kagoj. See News Coverages for the full list."],[A.go("News Coverages","news",1)])}],
+[function(n){return/gallery|photo|picture|image/.test(n)},function(){return R(["See our work in action in the Gallery \u2014 tap the frame to open every photo."],[A.go("Open Gallery","gallery",1)])}]
+];
+function answer(q){var n=q.toLowerCase().trim();
+for(var i=0;i<INT.length;i++){if(INT[i][0](n))return INT[i][1](n)}
+var t=top(q,2);
+if(t.length&&t[0].s>=2.2){var a=[A.go("Open "+(NAMES[t[0].id]||t[0].id),t[0].id,1)];
+if(t[1]&&t[1].id!==t[0].id&&t[1].s>=t[0].s*.7)a.push(A.go("Also see "+(NAMES[t[1].id]||t[1].id),t[1].id));
+var p=[snip(t[0].t)];if(t[0].t.length<90){var nx=build().c[t[0].i+1];if(nx&&nx.id===t[0].id)p.push(snip(nx.t))}
+return R(["From the \u201c"+(NAMES[t[0].id]||t[0].id)+"\u201d section:"].concat(p),a)}
+var l=L();return R(["I couldn't find that on the website. I can help with our programs, the National Youth Innovation Challenge 2026, joining as a volunteer or campus ambassador, and contact details.","For anything else, please email "+l.mail+"."],[A.link("Email us","mailto:"+l.mail,1),A.ask("Help","help")])}
+
+/* ---- chat UI ---- */
+var hist=[],started=false,chain=Promise.resolve();
+function down(){log.scrollTop=log.scrollHeight}
+function go(id){var s=document.getElementById(id);if(!s)return;s.scrollIntoView({behavior:RM?"auto":"smooth",block:"start"});if(window.innerWidth<=560)close()}
+function mk(x){var n;if(x.t==="link"){n=el("a","ai-act"+(x.p?" p":""),x.label);n.href=x.href;if(/^https?:/.test(x.href)){n.target="_blank";n.rel="noopener"}}
+else{n=el("button","ai-act"+(x.p?" p":""),x.label);n.type="button";n.addEventListener("click",function(){if(x.t==="go")go(x.id);else ask(x.q)})}return n}
+function addMe(t){log.appendChild(el("div","ai-m me",t));down()}
+function addBot(r){var m=el("div","ai-m bot");(Array.isArray(r.text)?r.text:[r.text]).forEach(function(t){m.appendChild(el("p",null,t))});
+if(r.acts&&r.acts.length){var a=el("div","ai-acts");r.acts.forEach(function(x){a.appendChild(mk(x))});m.appendChild(a)}log.appendChild(m);down()}
+function remote(q,r){var c=window.AbortController?new AbortController():null,to=setTimeout(function(){if(c)c.abort()},12000);
+return fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q,history:hist.slice(-6),context:top(q,4).map(function(k){return k.h+": "+k.t})}),signal:c?c.signal:undefined}).then(function(x){clearTimeout(to);if(!x.ok)throw 0;return x.json()}).then(function(d){if(!d||typeof d.reply!=="string"||!d.reply)throw 0;return{text:d.reply.split(/\n{2,}/).slice(0,4),acts:r.acts}})}
+function typing(){var t=el("div","ai-m bot ai-typing");t.appendChild(el("i"));t.appendChild(el("i"));t.appendChild(el("i"));log.appendChild(t);down();return t}
+function reply(q,t){var t0=Date.now(),r;try{r=answer(q)}catch(e){r=R(["Sorry, something went wrong. Please try again, or email aspirebd.123@gmail.com."])}
+var p=AI_ENDPOINT?remote(q,r).catch(function(){return r}):Promise.resolve(r);
+return p.then(function(res){return new Promise(function(ok){setTimeout(function(){try{t.remove();addBot(res);hist.push({role:"assistant",content:[].concat(res.text).join(" ")})}catch(e){}ok()},Math.max(0,(RM?0:450)-(Date.now()-t0)))})})}
+function ask(q){q=(q||"").trim();if(!q)return;addMe(q);hist.push({role:"user",content:q});var t=typing();chain=chain.then(function(){return reply(q,t)}).catch(function(){try{t.remove()}catch(e){}})}
+function open(){panel.classList.add("open");panel.setAttribute("aria-hidden","false");btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-label","Close Kibou AI");tip.classList.remove("show");
+if(!started){started=true;addBot(R(["I am Kibou AI, the Aspire Bangladesh assistant. Ask me about our programs, the National Youth Innovation Challenge 2026, or how to join us."]))}
+build();if(window.matchMedia&&matchMedia("(hover:hover)").matches)setTimeout(function(){inp.focus()},60)}
+function close(){panel.classList.remove("open");panel.setAttribute("aria-hidden","true");btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open Kibou AI")}
+btn.addEventListener("click",function(){panel.classList.contains("open")?close():open()});
+tip.addEventListener("click",open);xb.addEventListener("click",function(){close();btn.focus()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&panel.classList.contains("open")){close();btn.focus()}});
+var sendBtn=form.querySelector("button[type=submit]");
+function send(){var v=inp.value.trim();if(!v)return;inp.value="";ask(v)}
+form.addEventListener("submit",function(e){e.preventDefault();send()});
+sendBtn.addEventListener("click",function(e){e.preventDefault();send()});
+sendBtn.addEventListener("mousedown",function(e){e.preventDefault()});
+inp.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.isComposing&&!e.shiftKey){e.preventDefault();send()}});
+/* keep the input visible above the phone keyboard */
+var vv=window.visualViewport;
+function fit(){if(!vv)return;panel.style.setProperty("--vvh",vv.height+"px");panel.style.setProperty("--vvt",vv.offsetTop+"px")}
+if(vv){vv.addEventListener("resize",fit);vv.addEventListener("scroll",fit)}
+inp.addEventListener("focus",function(){if(window.innerWidth<=520){fit();panel.classList.add("kb");setTimeout(down,300)}});
+inp.addEventListener("blur",function(){setTimeout(function(){if(document.activeElement!==inp)panel.classList.remove("kb")},150)});
+[["Register for the event","How do I register for the event?"],["Join as volunteer","How can I join as a volunteer?"],["Campus ambassador","How do I become a campus ambassador?"],["Our programs","What programs do you run?"],["Contact us","How can I contact you?"],["Help","help"]].forEach(function(c){var b=el("button","ai-chip",c[0]);b.type="button";b.addEventListener("click",function(){ask(c[1])});b.addEventListener("mousedown",function(e){e.preventDefault()});chipBox.appendChild(b)});
+var seen=false;try{seen=sessionStorage.getItem("aspire_ai_tip")==="1"}catch(e){}
+if(!seen){setTimeout(function(){if(panel.classList.contains("open"))return;tip.classList.add("show");try{sessionStorage.setItem("aspire_ai_tip","1")}catch(e){}setTimeout(function(){tip.classList.remove("show")},9000)},3000)}
 })();</script>
 </body>
 </html>
